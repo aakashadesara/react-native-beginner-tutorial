@@ -1,6 +1,6 @@
 ![Follow](https://img.shields.io/github/followers/aakashadesara?style=social)
 ![Star](https://img.shields.io/github/stars/aakashadesara/react-native-beginner-tutorial?style=social)
-
+![](https://img.shields.io/apm/l/vim-mode)
 
 # 🐮 React Native Tutorial - NewsApp
 
