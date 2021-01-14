@@ -1,3 +1,4 @@
+[![CC BY 4.0][cc-by-shield]][cc-by]
 # 🐮 React Native Tutorial - NewsApp
 
 This is React Native programming tutorial originally created for a HackDavis '21 workshop but put into a readme for other new developers to learn from.
