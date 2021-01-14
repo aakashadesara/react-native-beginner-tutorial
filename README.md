@@ -1,6 +1,7 @@
 ![Follow](https://img.shields.io/github/followers/aakashadesara?style=social)
 ![Star](https://img.shields.io/github/stars/aakashadesara/react-native-beginner-tutorial?style=social)
 ![](https://img.shields.io/apm/l/vim-mode)
+![](https://img.shields.io/badge/hackathon-HackDavis-orange)
 
 # 🐮 React Native Tutorial - NewsApp
 
