@@ -1,4 +1,6 @@
-![npm](https://img.shields.io/npm/v/solidity-sigutils.svg)
+![Follow](https://img.shields.io/github/followers/aakashadesara?style=social)
+![Star](https://img.shields.io/github/stars/aakashadesara/react-native-beginner-tutorial?style=social)
+
 
 # 🐮 React Native Tutorial - NewsApp
 
