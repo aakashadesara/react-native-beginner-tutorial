@@ -1,13 +1,10 @@
-![Follow](https://img.shields.io/github/followers/aakashadesara?style=social)
-![Star](https://img.shields.io/github/stars/aakashadesara/react-native-beginner-tutorial?style=social)
-![](https://img.shields.io/apm/l/vim-mode)
-![](https://img.shields.io/badge/hackathon-HackDavis-orange)
-
 # 🐮 React Native Tutorial - NewsApp
 
 This is React Native programming tutorial originally created for a HackDavis '21 workshop but put into a readme for other new developers to learn from.
 
 As you are reading through this tutorial, if you find any part which is confusing, come across a typo, or have any recommendations for improvements, feel free to shoot me a DM on [Twitter](https://twitter.com/aakashadesara) or better yet, make a Pull Request.
+
+_**NOTE:**_ _A `⭐️` emoji implies that there is a code-along opportunity. I encourage you to pause and follow-along with starred steps to practice_
 
 Anyhow, let's get hacking! This is a follow-along tutorial so I recommend you bust out your favorite code editor and code alongside while reading through this.
 
@@ -80,7 +77,7 @@ Pretty basic but we'll make it fancy in a bit 😎
 
 ## 😅 "Components"? What's that
 
-So before we dive deep into development, it's imporant to understand one of the literal basic building blocks of React applications -- Components. Components are pretty much what they sound like, a piece, of an application. Developers create Components in their apps so they can re-use code, and re-use various parts of the UI (user interface) throughout the application.
+So before we dive deep into development, it's imporant to understand one of the literal basic building blocks of React applications -- Components. Components are pretty much what they sound like, a piece of an application. Developers create Components in their apps so they can re-use code, and re-use various parts of the UI (user interface) throughout the application.
 
 There are two types of Components, `functional` components and `class` components. Both serve the same purpose but have nuances in their implementations.
 
@@ -219,7 +216,7 @@ That's cool, but now we want to add some more useful elements to our component. 
 
 In order to add a Search Bar to our app, we will need to use a special React Native component called `<TextInput>`. In order to use this Component, you first need to import it.
 
-At the top of the file, change the line that says:
+⭐️ At the top of the file, change the line that says:
 
 ```javascript
 import { StyleSheet, Text, View } from "react-native";
@@ -233,7 +230,7 @@ import { StyleSheet, View, TextInput } from "react-native";
 
 Now we have access to the `TextInput` component.
 
-Now, we need to actually call that component and use it in our our App 'class` component. In order to do so, change the render method of our App component to look like so:
+⭐️ Now, we need to actually call that component and use it in our our App 'class` component. In order to do so, change the render method of our App component to look like so:
 
 ```javascript
     render() {
@@ -255,7 +252,7 @@ What you did here was create an input field where the user can type stuff. The `
 
 ## 📰 Making a News Feed
 
-Next up, we're gonna make a news feed with some fake data. The first thing you'll need is, some fake data. Go ahead and copy this snippet of code into your `App.js` file right below your import statements at the top of the file:
+⭐️ Next up, we're gonna make a news feed with some fake data. The first thing you'll need is, some fake data. Go ahead and copy this snippet of code into your `App.js` file right below your import statements at the top of the file:
 
 ```javascript
 const FAKE_NEWS_CONTENT = [
@@ -288,7 +285,7 @@ const FAKE_NEWS_CONTENT = [
 
 In this case, `FAKE_NEWS_CONTENT`, is an array of javascript objects. Each object has four attributes: `title`, `description`, `image`, and `url`. We are going to use this data to visualize ours news feed while hacking but, later on in this tutorial you will link it up with actual data from an [API](https://www.mulesoft.com/resources/api/what-is-an-api#:~:text=API%20is%20the%20acronym%20for,you're%20using%20an%20API.) ... more on that later.
 
-After adding in the `FAKE_NEWS_CONTENT` data, you will need to set the state of our App component so it knows what news to render -- which in this case is the `FAKE_NEWS_CONTENT`. Go ahead and update the constructor of your App class to say the following:
+⭐️ After adding in the `FAKE_NEWS_CONTENT` data, you will need to set the state of our App component so it knows what news to render -- which in this case is the `FAKE_NEWS_CONTENT`. Go ahead and update the constructor of your App class to say the following:
 
 ```javascript
 constructor(props) {
@@ -302,7 +299,7 @@ constructor(props) {
 
 ```
 
-After updating the `news` state, you will need to import an important component to make a newsfeed: `ScrollView`. Change the line that says:
+⭐️ After updating the `news` state, you will need to import an important component to make a newsfeed: `ScrollView`. Change the line that says:
 
 ```javascript
 import { StyleSheet, Text, View } from "react-native";
@@ -314,7 +311,7 @@ to say this instead:
 import { StyleSheet, View, TextInput, ScrollView } from "react-native";
 ```
 
-After importing `ScrollView` module, go ahead and update the render method of your App class component so you call ScrollView.
+⭐️ After importing `ScrollView` module, go ahead and update the render method of your App class component so you call ScrollView.
 
 ```javascript
 render() {
@@ -338,7 +335,7 @@ What we did here was create a ScrollView which can hold a bunch of 'children' cl
 
 Now, let's loop through the data and make it print something. You can use the `.map()` javascript function to loop through an array and do something on each entry. In our case, we want to loop through the Array and, return one "News Item" per element in our array. At the moment, we don't have a "News Item" class so let's just print the titles.
 
-Change your code to say the following:
+⭐️ Change your code to say the following:
 
 ```javascript
 render() {
@@ -370,7 +367,7 @@ Your app should look like this:
 
 Cool, so now we have the titles rendering but we want to render more -- we want the image, title, subtitle, AND url. We could put all the code for rendering that into the place where we said ` <Text>{data.title}</Text>;` but that would lead to a really long App component. Instead, we should create a new component in a new file called `NewsItem.js`.
 
-Go ahead and create a new file called `NewsItem.js` and copy this code into there:
+⭐️ Go ahead and create a new file called `NewsItem.js` and copy this code into there:
 
 ```javascript
 import React from "react";
@@ -408,7 +405,7 @@ So considering that we access to the `props` attribute in our NewsItem component
 />
 ```
 
-So we have four props, `title`, `description`, `image`, and `url`. In our NewsItem class, go ahead and update the function so it looks like so:
+⭐️ We have four props: `title`, `description`, `image`, and `url`. In our NewsItem class, go ahead and update the function so it looks like so:
 
 ```javascript
 export function NewsItem(props) {
@@ -428,8 +425,6 @@ export function NewsItem(props) {
         <Button
           title={"Read the article"}
           onClick={() => {
-            // Linking is a React Native module which opens up a url in the
-            //      user's default browser
             Linking.openURL(url);
           }}
         ></Button>
@@ -447,9 +442,7 @@ export function NewsItem(props) {
 }
 ```
 
-A lot of this syntax should feel familiar to what we've done before (i.e View, Text, etc).
-
-In this snippet:
+A lot of this syntax should feel familiar to what we've done before (i.e View, Text, etc). In this snippet:
 
 ```javascript
 <Button
@@ -460,13 +453,13 @@ In this snippet:
 ></Button>
 ```
 
-We are making a "Button" that has the title "Read the article", and when you click on the button, it will call an anonymous function which uses the `Linking` library to open a url.
+we are making a "Button" that has the title "Read the article", and when you click on the button, it will call an anonymous function which uses the `Linking` library to open a url.
 
 Now we have a NewsItem component!
 
 ## 🥁 Using the NewsItem Component
 
-Now that we have the NewsItem functional component, we want to use it. In your `App.js` file, import the `NewsItem` class at the top by saying:
+⭐️ Now that we have the NewsItem functional component, we want to use it. In your `App.js` file, import the `NewsItem` class at the top by saying:
 
 ```javascript
 import { NewsItem } from "./NewsItem.js";
@@ -498,7 +491,7 @@ Refresh the page and it should look like this:
 
 Now that we have the articles rendering using the `NewsItem` component in a scrollview, lets try to fill our news feed with _real_ news. For this, we will be hitting [lil.software's News API](https://lil.software/api/).
 
-In App.js, add a Lifecycle Method called `componentDidMount()` to your `App` class component.
+⭐️ In App.js, add a Lifecycle Method called `componentDidMount()` to your `App` class component.
 
 ```javascript
 componentDidMount() {
@@ -526,7 +519,7 @@ After adding this `componentDidMount()` method, we will have a fully rendering N
 
 ## 🕵🏽‍♂️ Adding Search Functionality
 
-Now that our News is rendering, lets add in a way to filter our articles based on a query. In App.js, update your `<TextInput>` to reflect this change:
+⭐️ Now that our News is rendering, lets add in a way to filter our articles based on a query. In App.js, update your `<TextInput>` to reflect this change:
 
 ```javascript
 <TextInput
@@ -536,7 +529,7 @@ Now that our News is rendering, lets add in a way to filter our articles based o
 />
 ```
 
-and make a new method above the render method called `updateSearch`
+⭐️ and make a new method above the render method called `updateSearch`
 
 ```javascript
 updateSearch = (text) => {
@@ -548,7 +541,7 @@ updateSearch = (text) => {
 
 What happens here is that the `TextInput` will now call `updateSearch` every time we type text into `TextInput` and `updateSearch` will then update the state so it saves our query in the Component's state.
 
-Finally, update your `ScrollView` so it looks like this:
+⭐️ Finally, update your `ScrollView` so it looks like this:
 
 ```javascript
 <ScrollView style={styles.newsContainer}>
