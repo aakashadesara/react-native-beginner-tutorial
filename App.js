@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { StyleSheet, View, TextInput, ScrollView } from "react-native";
+import { StyleSheet, View, TextInput, ScrollView, Text } from "react-native";
 import { NewsItem } from "./NewsItem.js";
 
 const FAKE_NEWS_CONTENT = [
@@ -44,8 +44,8 @@ export default class App extends Component {
     super(props);
 
     this.state = {
-      // news: FAKE_NEWS_CONTENT // this is sample data, un-comment if you want to see
-      news: [],
+      news: FAKE_NEWS_CONTENT, // this is sample data, un-comment if you want to see
+      // news: [],
       search: "",
     };
   }
@@ -60,13 +60,13 @@ export default class App extends Component {
     to fetch News data and set our component's state so it knows what to render.
   */
   componentDidMount() {
-    fetch("https://api.lil.software/news")
-      .then((j) => {
-        return j.json();
-      })
-      .then((res) => {
-        this.setState({ news: res["articles"] });
-      });
+    // fetch("https://api.lil.software/news")
+    //   .then((j) => {
+    //     return j.json();
+    //   })
+    //   .then((res) => {
+    //     this.setState({ news: res["articles"] });
+    //   });
   }
 
   /*
@@ -102,18 +102,7 @@ export default class App extends Component {
 
         <ScrollView style={styles.newsContainer}>
           {this.state.news.map((data) => {
-            if (!data.title.includes(this.state.search)) {
-              return null;
-            }
-
-            return (
-              <NewsItem
-                title={data.title}
-                description={data.description}
-                image={data.image}
-                url={data.url}
-              />
-            );
+            return <Text>{data.title}</Text>;
           })}
         </ScrollView>
       </View>
