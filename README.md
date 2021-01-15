@@ -460,3 +460,137 @@ We are making a "Button" that has the title "Read the article", and when you cli
 Now we have a NewsItem component!
 
 ## 🥁 Using the NewsItem Component
+
+Now that we have the NewsItem functional component, we want to use it. In your `App.js` file, import the `NewsItem` class at the top by saying:
+
+```javascript
+import { NewsItem } from "./NewsItem.js";
+```
+
+and then, change the line that says
+
+```javascript
+return <Text>{data.title}</Text>;
+```
+
+to say this instead:
+
+```javascript
+return (
+  <NewsItem
+    title={data.title}
+    description={data.description}
+    image={data.image}
+    url={data.url}
+  />
+);
+```
+
+Refresh the page and it should look like this:
+<img src="step4.png" width="400" />
+
+### ☁️ Calling the News API for Real News
+
+Now that we have the articles rendering using the `NewsItem` component in a scrollview, lets try to fill our news feed with _real_ news. For this, we will be hitting [lil.software's News API](https://lil.software/api/).
+
+In App.js, add a Lifecycle Method called `componentDidMount()` to your `App` class component.
+
+```javascript
+componentDidMount() {
+    fetch("https://api.lil.software/news")
+      .then((j) => {
+        return j.json();
+      })
+      .then((res) => {
+        this.setState({
+          news: res["articles"],
+        });
+      });
+  }
+```
+
+In React, we have these special methods that can be used in Class Components called 'Lifecycle Methods' -- methods that are run when the component mounts, unmounts, or does other special component behavior. In our case, we want to call our NewsAPI right when the component mounts which is why we added our API code to the `componentDidMount()` method.
+
+The way we hit the API is by calling the Javascript `fetch` method with the API url. We then use the returned promise and turn it into a json value which is further passed into another .then statement that ultimately gets saved in the state of the component (overriding the `news` part of the state).
+
+[ I know this sounds complex and but here is a resource that will explain what an [API](https://www.youtube.com/watch?v=s7wmiS2mSXY&ab_channel=MuleSoftVideos) is and here is another resource that explains what a '[Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)' is in Javascript ]
+
+After adding this `componentDidMount()` method, we will have a fully rendering News App!
+
+<img src="step5.png" width="400" />
+
+## 🕵🏽‍♂️ Adding Search Functionality
+
+Now that our News is rendering, lets add in a way to filter our articles based on a query. In App.js, update your `<TextInput>` to reflect this change:
+
+```javascript
+<TextInput
+  placeholder="Put your query here"
+  onChangeText={(text) => this.updateSearch(text)}
+  style={{ fontSize: 20, marginBottom: 24 }}
+/>
+```
+
+and make a new method above the render method called `updateSearch`
+
+```javascript
+updateSearch = (text) => {
+  this.setState({
+    search: text,
+  });
+};
+```
+
+What happens here is that the `TextInput` will now call `updateSearch` every time we type text into `TextInput` and `updateSearch` will then update the state so it saves our query in the Component's state.
+
+Finally, update your `ScrollView` so it looks like this:
+
+```javascript
+<ScrollView style={styles.newsContainer}>
+  {this.state.news.map((data) => {
+    if (!data.title.includes(this.state.search)) {
+      return null;
+    }
+
+    return (
+      <NewsItem
+        title={data.title}
+        description={data.description}
+        image={data.image}
+        url={data.url}
+      />
+    );
+  })}
+</ScrollView>
+```
+
+The main change here are these three lines:
+
+```javascript
+if (!data.title.includes(this.state.search)) {
+  return null;
+}
+```
+
+What this is saying is that if the articles title does not include the search query, then returning `null` or an empty element.
+
+The ultimate effect will be that only text that we query for will show up in the feed.
+<img src="step6.png" width="400" />
+
+### 🎉 Wrapping Up
+
+And with that final step, you are done with this News App! You've learned about how to build Class + Function components, managing components with states + props, calling an API, Lifecycle methods, CSS, modules, and more.
+
+If you want to continue exploring React Native, I recommend checking out these links:
+
+1. React Native Documentation - [link](https://reactnative.dev/docs/getting-started)
+2. Core Components & APIs - [link](https://reactnative.dev/docs/components-and-apis)
+3. Introduction to Expo - [link](https://docs.expo.io/)
+
+Congratulations on finishing this tutorial -- I hope you continue exploring React Native.
+
+--
+
+_Feel free to DM me on [Twitter](https://twitter.com/aakashadesara) if you have any questions or recommendations. Also, make a Pull Request if you'd like to edit this tutorial._
+
+_Cheers!_ ✌️
